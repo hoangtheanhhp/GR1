@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Recommender System</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-6">
+            {% for c in related %}
+                <a href="{{ c['src'] }}" >{{ c['title'] }}</a>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

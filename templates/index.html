@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Recommender System</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-2">
+			<ul class="list-group">
+				{% for c in cate %}
+					<a href="{{ url_for('home', cat = c['cat']) }}"><li class="list-group-item">{{ c['category'] }}</li></a>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="col-4">
+			{% for url in urls %}
+				<a class="news" data-href="{{ url['src'] }}" href="{{ url_for('get_related',related = url['relate']) }}">{{ url['title'] }}</a>
+				<br>
+
+			{% endfor %}
+		</div>
+		<div class="col-6">
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script type= text/javascript>
+		$(".news").click(function() {
+			thisdata = $(this).attr('data-href');
+			console.log(thisdata)
+			window.open(thisdata);
+
+		});
+</script>
+{% endblock %}
+
